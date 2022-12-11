@@ -17,6 +17,12 @@
       }
     },
 
+    "ReplicatedStorage": {
+      "DragonEyeShared": {
+        "$path": "src/shared"
+      }
+    },
+
     "Workspace": {
       "$properties": {
         "FilteringEnabled": true

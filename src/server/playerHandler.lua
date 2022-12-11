@@ -17,6 +17,29 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ]]--
 --!strict
 
-print("Dragon Eye is starting...")
+-- Private variable for player data
+local playerData = {}
 
-local playerHandler = require(script.Parent.playerHandler)
+-- Returns a copy of the player data table
+function getAddData(): {}
+    return playerData
+end
+
+-- Returns a copy of the players data within the player data table
+function getPlayerData(player: Player): {}
+    return playerData[player.UserId]
+end
+
+-- Adds a player to the player data table
+function addPlayer(player: Player): ()
+    playerData[player.UserId] = {
+        name = player.Name,
+        id = player.UserId,
+    }
+end
+
+return {
+    getAllData = getAddData,
+    getPlayerData = getPlayerData,
+    addPlayer = addPlayer,
+}
