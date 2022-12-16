@@ -16,3 +16,28 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ]]--
 --!strict
+
+local RunService = game:GetService("RunService")
+
+local logCodes = {
+    LogServer               = "LS",
+    LogClient               = "LC",
+    WarnServer              = "WS",
+    WarnClient              = "WC",
+    ErrorServerCompromised  = "ES0", -- Deadly error, server is compromised!
+}
+
+local function log(logType: string, message: string): ()
+    print("[DE] (" .. logType .. ") " .. message)
+
+    -- Panic mode if error and it is on the server
+    if logType:sub(1,1) == "E" and RunService:IsServer() then
+        -- TODO: Panic mode (This will take a while)
+        warn("[DE] Error detected! Starting panic mode...")
+    end
+end
+
+return {
+    log = log,
+    logCode = logCodes,
+}

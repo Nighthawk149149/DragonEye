@@ -19,4 +19,4 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 local debug = require(game.ReplicatedStorage:WaitForChild("DragonEyeShared"):WaitForChild("debug"))
 
-debug.log(debug.logCode.LogServer, "Starting Dragon Eye Server...")
+debug.log(debug.logCode.LogClient, "Starting Dragon Eye Client...")

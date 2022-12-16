@@ -21,17 +21,17 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 local playerData = {}
 
 -- Returns a copy of the player data table
-function getAddData(): {}
+local function getAllData(): {}
     return playerData
 end
 
 -- Returns a copy of the players data within the player data table
-function getPlayerData(player: Player): {}
+local function getPlayerData(player: Player): {}
     return playerData[player.UserId]
 end
 
 -- Adds a player to the player data table
-function addPlayer(player: Player): ()
+local function addPlayer(player: Player): ()
     playerData[player.UserId] = {
         name = player.Name,
         id = player.UserId,
@@ -39,7 +39,7 @@ function addPlayer(player: Player): ()
 end
 
 return {
-    getAllData = getAddData,
+    getAllData = getAllData,
     getPlayerData = getPlayerData,
     addPlayer = addPlayer,
 }
