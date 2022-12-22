@@ -14,28 +14,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ]]--
 --!strict
 
-local p, f = print, string.format
+local log = require(game.ReplicatedStorage.DragonEyeShared.Debug.Log)
 
---[[
-    Test/Extra Codes start at:  0
-    Server Codes Start at:      100
-    Client Codes Start at:      200
-    Shaded Codes Start at:      300
-]]--
-local codes = {
-    test = 0,
-
-    server = {
-        Log = 100,
-        Warn = 101,
-    }
-}
-
-local function write(code: number, file: string, message: string): ()
-    p(f("[Dragon Eye] (%s) Error: %d, Message: %s", file, code, message))
-end
-
-return {
-    write = write,
-    codes = codes,
-}
+log.write(log.codes.server.log, script:GetFullName(), "Starting...")
