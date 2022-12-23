@@ -17,45 +17,53 @@ use std::{fs::File, io::Read};
 
 use crate::to_lua::lua::Lua;
 
-pub struct Settings;
+pub struct Codes;
 
-impl Settings {
+impl Codes {
     pub fn run() {
         let mut lua = Lua::new();
         lua.push("return {\n");
 
         let mut contents = String::new();
-        File::open("./src/Data/settings.txt")
+        File::open("./src/Data/codes.txt")
             .unwrap()
             .read_to_string(&mut contents)
             .unwrap();
 
         contents.lines().for_each(|line| {
-            if line.trim().is_empty() || line.trim().starts_with('!') {
+            if line.trim().is_empty() {
                 return;
+            }
+            if line.trim().starts_with('[') {
+                match &line.trim()[1..2] {
+                    "G" => {
+                        lua.push("\tgeneral = {\n");
+                        return;
+                    }
+                    "S" => {
+                        lua.push("\t},\n\tserver = {\n");
+                        return;
+                    }
+                    "C" => {
+                        lua.push("\t},\n\tclient = {\n");
+                        return;
+                    }
+                    _ => panic!("Invalid type"),
+                }
             }
 
             let mut split = line.split(':');
-            let var_type = match split.next().unwrap() {
-                "B" => "boolean",
-                "N" => "number",
-                _ => panic!("Invalid type"),
-            };
-
-            let var_name = split.next().unwrap();
-            let var_value = split.next().unwrap();
-            let var_comment = split.next().unwrap();
-
             lua.push(
                 format!(
-                    "\t--[[ {} ]]--\n\t{} = {}, -- {} (Default: {})\n",
-                    var_comment, var_name, var_value, var_type, var_value
+                    "\t\t{} = {},\n",
+                    split.next().unwrap(),
+                    split.next().unwrap()
                 )
                 .as_str(),
             );
         });
 
-        lua.push("}");
-        lua.output("./src/Luau/Shared/settings.lua")
+        lua.push("\t},\n}");
+        lua.output("./src/Luau/Shared/Debug/codes.lua");
     }
 }

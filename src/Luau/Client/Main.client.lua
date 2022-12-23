@@ -13,9 +13,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ]]--
 --!strict
-return {
-	--[[ Turns the anti-cheat on (true) and off (false) ]]--
-	ToggleAntiCheatOnOrOff = false, -- boolean (Default: false)
-	--[[ Some cool test data ]]--
-	TestData = 1, -- number (Default: 1)
-}
+
+local log = require(game.ReplicatedStorage.DragonEyeShared.Debug.Log)
+
+log.write(log.codes.client.log, script:GetFullName(), "Starting...")

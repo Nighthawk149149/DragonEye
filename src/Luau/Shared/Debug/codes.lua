@@ -14,8 +14,16 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ]]--
 --!strict
 return {
-	--[[ Turns the anti-cheat on (true) and off (false) ]]--
-	ToggleAntiCheatOnOrOff = false, -- boolean (Default: false)
-	--[[ Some cool test data ]]--
-	TestData = 1, -- number (Default: 1)
+	general = {
+		log = 0,
+		warn = 1,
+	},
+	server = {
+		log = 100,
+		warn = 101,
+	},
+	client = {
+		log = 200,
+		warn = 201,
+	},
 }

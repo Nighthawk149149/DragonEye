@@ -28,11 +28,16 @@ local codes = {
     server = {
         log = 100,
         warn = 101,
+    },
+
+    client = {
+        log = 200,
+        warn = 201,
     }
 }
 
 local function write(code: number, file: string, message: string): ()
-    p(f("[Dragon Eye] (%s) Error: %d, Message: %s", file, code, message))
+    p(f("[Dragon Eye] (%s) Code: %d, Message: %s", file, code, message))
 end
 
 return {
