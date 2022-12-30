@@ -17,13 +17,11 @@ use std::{fs::File, io::Read};
 
 use crate::to_lua::lua::Lua;
 
-pub struct Settings;
+pub struct Version;
 
-impl Settings {
+impl Version {
     pub fn run() {
         let mut lua = Lua::new();
-        lua.header();
-        lua.push("return {\n");
 
         let mut contents = String::new();
         File::open("./src/Data/settings.txt")
@@ -37,26 +35,14 @@ impl Settings {
             }
 
             let mut split = line.split(':');
-            let var_type = match split.next().unwrap() {
-                "B" => "boolean",
-                "N" => "number",
-                _ => panic!("Invalid type"),
-            };
+            split.next().unwrap();
+            let name = split.next().unwrap().trim();
+            let value = split.next().unwrap().trim();
 
-            let var_name = split.next().unwrap();
-            let var_value = split.next().unwrap();
-            let var_comment = split.next().unwrap();
-
-            lua.push(
-                format!(
-                    "\t--[[ {} ]]--\n\t{} = {}, -- {} (Default: {})\n",
-                    var_comment, var_name, var_value, var_type, var_value
-                )
-                .as_str(),
-            );
+            if name == "Version" {
+                lua.push(value);
+            }
         });
-
-        lua.push("}");
-        lua.output("./src/Luau/Shared/settings.lua")
+        lua.output("./VERSION.txt")
     }
 }

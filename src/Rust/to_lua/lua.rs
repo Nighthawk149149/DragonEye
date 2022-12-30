@@ -18,12 +18,9 @@ pub struct Lua {
 
 impl Lua {
     pub fn new() -> Lua {
-        let mut lua = Lua {
+        Lua {
             script: String::new(),
-        };
-
-        lua.header();
-        return lua;
+        }
     }
 
     pub fn push(&mut self, line: &str) {

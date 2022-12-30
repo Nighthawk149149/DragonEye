@@ -1,3 +1,2 @@
-! Test Settings
-! B:ToggleAntiCheatOnOrOff:false:Turns the anti-cheat on (true) and off (false)
-! N:TestData:1:Some cool test data
+! Version Setting
+N:Version:20221230202211:Current version of Dragon Eye

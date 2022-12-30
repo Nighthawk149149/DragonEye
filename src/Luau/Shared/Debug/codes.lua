@@ -21,6 +21,8 @@ return {
 	server = {
 		log = 100,
 		warn = 101,
+		http_fail = 102,
+		http_not_enabled = 103,
 	},
 	client = {
 		log = 200,
