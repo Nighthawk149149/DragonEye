@@ -1,5 +1,3 @@
-! Real Setting
-B:ToggleAntiCheatOnOrOff:false:Turns the anti-cheat on (true) and off (false)
-
-! Test Setting
-N:TestData:1:Some cool test data
+! Test Settings
+! B:ToggleAntiCheatOnOrOff:false:Turns the anti-cheat on (true) and off (false)
+! N:TestData:1:Some cool test data

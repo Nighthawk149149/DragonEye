@@ -14,27 +14,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ]]--
 --!strict
 
+local codes = require(script.Parent.Codes)
 local p, f = print, string.format
-
---[[
-    Test/Extra Codes start at:  0
-    Server Codes Start at:      100
-    Client Codes Start at:      200
-    Shaded Codes Start at:      300
-]]--
-local codes = {
-    test = 0,
-
-    server = {
-        log = 100,
-        warn = 101,
-    },
-
-    client = {
-        log = 200,
-        warn = 201,
-    }
-}
 
 local function write(code: number, file: string, message: string): ()
     p(f("[Dragon Eye] (%s) Code: %d, Message: %s", file, code, message))
