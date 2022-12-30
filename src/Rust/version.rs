@@ -30,7 +30,10 @@ impl Version {
             .unwrap();
 
         contents.lines().for_each(|line| {
-            if line.trim().is_empty() || line.trim().starts_with('!') {
+            if line.trim().is_empty()
+                || line.trim().starts_with('!')
+                || line.trim().starts_with('#')
+            {
                 return;
             }
 

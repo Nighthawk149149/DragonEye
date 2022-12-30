@@ -1,5 +1,5 @@
 # DragonEye
-***Version: 0.1.0*** - A base that can be used to start the project and something for the main branch to hold onto for a while.
+***Version: 0.2.0*** - A base that can be used to start the project and something for the main branch to hold onto for a while.
 
 ## Table of Contents
 - [DragonEye](#dragoneye)
@@ -32,6 +32,7 @@ The first version that can be used will be `1.0.0` and any version before is a d
 **\* - Development version (Latest Changes at the time of commit)**
 | Version | ISO 8601 (yyyymmddTHHmmssZ) | Supported |
 | ------- | -------- | --------- |
+| *0.2.0   | 20221230T232640Z | No |
 | *0.1.0   | 20221229T235630Z | No |
 
 ## Usage
