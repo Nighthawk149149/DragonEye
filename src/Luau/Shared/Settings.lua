@@ -14,4 +14,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ]]--
 --!strict
 return {
+	--[[ Current version of Dragon Eye ]]--
+	Version = 20221230202211, -- number (Default: 20221230202211)
 }

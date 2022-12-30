@@ -22,6 +22,7 @@ pub struct Codes;
 impl Codes {
     pub fn run() {
         let mut lua = Lua::new();
+        lua.header();
         lua.push("return {\n");
 
         let mut contents = String::new();
@@ -64,6 +65,6 @@ impl Codes {
         });
 
         lua.push("\t},\n}");
-        lua.output("./src/Luau/Shared/Debug/codes.lua");
+        lua.output("./src/Luau/Shared/Debug/Codes.lua");
     }
 }

@@ -14,6 +14,24 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ]]--
 --!strict
 
+-- Log the start of the server
 local log = require(game.ReplicatedStorage.DragonEyeShared.Debug.Log)
 
 log.write(log.codes.server.log, script:GetFullName(), "Starting...")
+
+-- Check for Dragon Eye Version
+-- https://raw.githubusercontent.com/Nighthawk149149/DragonEye/master/VERSION.txt
+local currentVersion = game.ReplicatedStorage.DragonEyeShared.Settings.Version
+local serverVersion
+
+local httpService = game:GetService("HttpService")
+local success, err = pcall(function() serverVersion = httpService:GetAsync("https://raw.githubusercontent.com/Nighthawk149149/DragonEye/master/VERSION.txt") end)
+if success then
+    if currentVersion ~= serverVersion then
+        log.write(log.codes.server.warn, script:GetFullName(), "The local version and server version do not match! Please update the Anti-Cheat to the latest version.")
+    end
+elseif err:lower():find("http requests are not enabled") then
+    log.write(log.codes.server.http_not_enabled, script:GetFullName(), err)
+else
+    log.write(log.codes.server.http_fail, script:GetFullName(), err)
+end
