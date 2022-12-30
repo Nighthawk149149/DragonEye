@@ -14,8 +14,4 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ]]--
 --!strict
 return {
-	--[[ Turns the anti-cheat on (true) and off (false) ]]--
-	ToggleAntiCheatOnOrOff = false, -- boolean (Default: false)
-	--[[ Some cool test data ]]--
-	TestData = 1, -- number (Default: 1)
 }
