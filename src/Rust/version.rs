@@ -40,10 +40,15 @@ impl Version {
             let mut split = line.split(':');
             split.next().unwrap();
             let name = split.next().unwrap().trim();
-            let value = split.next().unwrap().trim();
+            let value = if name == "Version" {
+                let value = split.next().unwrap().replace("T", "");
+                value.replace("Z", "")
+            } else {
+                String::from(split.next().unwrap())
+            };
 
             if name == "Version" {
-                lua.push(value);
+                lua.push(value.as_str());
             }
         });
         lua.output("./VERSION.txt")
