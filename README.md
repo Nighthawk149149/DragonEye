@@ -36,15 +36,19 @@ WIP
 WIP
 
 ### Versions
-This shows the major work we do on the project. It can be used to determine if a version is supported or not. Read below for more information.
+The ISO 8601 column acts as a UID for the version. When the ISO 8601 is changed that means an update is avalible.
 
-_A supported version is a version that is actively maintained and is considered to be stable **and** secure. A version that is not supported is considered to be deprecated or is planned to be. A version that is not supported may still be used, but is not recommended._
+The Supported column tells you if the version is being actively developed **or** has constant security updates. It is recommended to use a supported version to ensure the best security and performance.
+
+The API column tells you what version the API is at. If the API is the same between two or more versions, then the API is backwards compatible for those versions. If the API is different, then the API is not backwards compatible and needs to be updated within the game to work with the new version.
+
+The Released column tells you if the version is released or not. If it is then you can find it under releases. If not then the version is not intended for public use and is only for testing.
 
 **\* - Development version (Latest Changes at the time of commit)**
-| Version | ISO 8601         | Supported |
-| ------- | ---------------- | --------- |
-| *0.2.0  | 20221230T232640Z | No        |
-| *0.1.0  | 20221229T235630Z | No        |
+| ISO 8601         | Supported | API  | Released |
+| ---------------- | --------- | ---- | -------- |
+| 20221230T232640Z | No        | V0.2 | No       |
+| 20221229T235630Z | No        | V0.1 | No       |
 
 ## Usage
 WIP
