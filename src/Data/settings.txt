@@ -1,6 +1,6 @@
 # Version Setting
 ! The version should be in ISO 8601 format (yyyymmddThhmmssZ)
-N:Version:20221230T232640Z:Current version of Dragon Eye (Do NOT change this value)
+N:Version:20221231T213728Z:Current version of Dragon Eye (Do NOT change this value)
 
 # General Settings
 ! Log stuff

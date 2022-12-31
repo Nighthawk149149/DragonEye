@@ -16,7 +16,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 return {
 --:  Version Setting :--
 	--[[ Current version of Dragon Eye (Do NOT change this value) ]]--
-	Version = 20221230232640, -- number (Default: 20221230232640)
+	Version = 20221231213728, -- number (Default: 20221231213728)
 
 --:  General Settings :--
 	--[[ Enable logging ]]--
