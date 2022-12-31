@@ -1,10 +1,8 @@
 # Version Setting
-N:Version:20221230232640:Current version of Dragon Eye (Do NOT change this value)
+! The version should be in ISO 8601 format (yyyymmddThhmmssZ)
+N:Version:20221230T232640Z:Current version of Dragon Eye (Do NOT change this value)
 
 # General Settings
-! Update stuff
-B:CheckForUpdates:true:Check for updates on startup
-
 ! Log stuff
 B:EnableLogging:true:Enable logging
 B:ShortLogs:false:Shortens the logs to make then easier to read at the cost of some information

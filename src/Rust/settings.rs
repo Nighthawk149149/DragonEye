@@ -56,7 +56,14 @@ impl Settings {
             };
 
             let var_name = split.next().unwrap();
-            let var_value = split.next().unwrap();
+
+            let var_value = if var_name == "Version" {
+                let value = split.next().unwrap().replace("T", "");
+                value.replace("Z", "")
+            } else {
+                String::from(split.next().unwrap())
+            };
+
             let var_comment = split.next().unwrap();
 
             lua.push(

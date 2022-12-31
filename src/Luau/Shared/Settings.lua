@@ -19,8 +19,6 @@ return {
 	Version = 20221230232640, -- number (Default: 20221230232640)
 
 --:  General Settings :--
-	--[[ Check for updates on startup ]]--
-	CheckForUpdates = true, -- boolean (Default: true)
 	--[[ Enable logging ]]--
 	EnableLogging = true, -- boolean (Default: true)
 	--[[ Shortens the logs to make then easier to read at the cost of some information ]]--
