@@ -16,9 +16,17 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 local codes = require(script.Parent.Codes)
 local p, f = print, string.format
+local doLog = game.ReplicatedStorage.DragonEyeShared.Settings.EnableLogging
+local shorten = game.ReplicatedStorage.DragonEyeShared.Settings.ShortenLogs
 
 local function write(code: number, file: string, message: string): ()
-    p(f("[Dragon Eye] (%s) Code: %d, Message: %s", file, code, message))
+    if doLog then
+        if shorten then
+            p(f("[DE] %s", message))
+        else
+            p(f("[Dragon Eye] (%s) Code: %d, Message: %s", file, code, message))
+        end
+    end
 end
 
 return {

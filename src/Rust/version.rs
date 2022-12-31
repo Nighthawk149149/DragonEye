@@ -17,54 +17,35 @@ use std::{fs::File, io::Read};
 
 use crate::to_lua::lua::Lua;
 
-pub struct Codes;
+pub struct Version;
 
-impl Codes {
+impl Version {
     pub fn run() {
         let mut lua = Lua::new();
-        lua.header();
-        lua.push("return {\n");
 
         let mut contents = String::new();
-        File::open("./src/Data/codes.txt")
+        File::open("./src/Data/settings.txt")
             .unwrap()
             .read_to_string(&mut contents)
             .unwrap();
 
         contents.lines().for_each(|line| {
-            if line.trim().is_empty() {
+            if line.trim().is_empty()
+                || line.trim().starts_with('!')
+                || line.trim().starts_with('#')
+            {
                 return;
-            }
-            if line.trim().starts_with('[') {
-                match &line.trim()[1..2] {
-                    "G" => {
-                        lua.push("\tgeneral = {\n");
-                        return;
-                    }
-                    "S" => {
-                        lua.push("\t},\n\tserver = {\n");
-                        return;
-                    }
-                    "C" => {
-                        lua.push("\t},\n\tclient = {\n");
-                        return;
-                    }
-                    _ => panic!("Invalid type"),
-                }
             }
 
             let mut split = line.split(':');
-            lua.push(
-                format!(
-                    "\t\t{} = {},\n",
-                    split.next().unwrap(),
-                    split.next().unwrap()
-                )
-                .as_str(),
-            );
-        });
+            split.next().unwrap();
+            let name = split.next().unwrap().trim();
+            let value = split.next().unwrap().trim();
 
-        lua.push("\t},\n}");
-        lua.output("./src/Luau/Shared/Debug/Codes.lua");
+            if name == "Version" {
+                lua.push(value);
+            }
+        });
+        lua.output("./VERSION.txt")
     }
 }

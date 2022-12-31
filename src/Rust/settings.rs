@@ -21,7 +21,10 @@ pub struct Settings;
 
 impl Settings {
     pub fn run() {
+        let mut new_line = false;
+
         let mut lua = Lua::new();
+        lua.header();
         lua.push("return {\n");
 
         let mut contents = String::new();
@@ -32,6 +35,16 @@ impl Settings {
 
         contents.lines().for_each(|line| {
             if line.trim().is_empty() || line.trim().starts_with('!') {
+                return;
+            }
+
+            if line.trim().starts_with('#') {
+                if !new_line {
+                    lua.push(format!("--: {} :--\n", &line.trim()[1..]).as_str());
+                    new_line = true;
+                } else {
+                    lua.push(format!("\n--: {} :--\n", &line.trim()[1..]).as_str());
+                }
                 return;
             }
 

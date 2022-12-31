@@ -1,3 +1,10 @@
-! Test Settings
-! B:ToggleAntiCheatOnOrOff:false:Turns the anti-cheat on (true) and off (false)
-! N:TestData:1:Some cool test data
+# Version Setting
+N:Version:20221230232640:Current version of Dragon Eye (Do NOT change this value)
+
+# General Settings
+! Update stuff
+B:CheckForUpdates:true:Check for updates on startup
+
+! Log stuff
+B:EnableLogging:true:Enable logging
+B:ShortLogs:false:Shortens the logs to make then easier to read at the cost of some information

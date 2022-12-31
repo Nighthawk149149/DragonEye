@@ -14,4 +14,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ]]--
 --!strict
 return {
+--:  Version Setting :--
+	--[[ Current version of Dragon Eye (Do NOT change this value) ]]--
+	Version = 20221230232640, -- number (Default: 20221230232640)
+
+--:  General Settings :--
+	--[[ Check for updates on startup ]]--
+	CheckForUpdates = true, -- boolean (Default: true)
+	--[[ Enable logging ]]--
+	EnableLogging = true, -- boolean (Default: true)
+	--[[ Shortens the logs to make then easier to read at the cost of some information ]]--
+	ShortLogs = false, -- boolean (Default: false)
 }
