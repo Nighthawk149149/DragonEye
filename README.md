@@ -36,15 +36,47 @@ WIP
 WIP
 
 ### Versions
-This shows the major work we do on the project. It can be used to determine if a version is supported or not. Read below for more information.
+Good stuff to start with
+```
+1. Check for update (Request from GitHub)
+2. If update, prompt install
+3. If intall, check hashes and install from GitHub
+4. When done, prompt close
+```
+```
+How to handle settings?
 
-_A supported version is a version that is actively maintained and is considered to be stable **and** secure. A version that is not supported is considered to be deprecated or is planned to be. A version that is not supported may still be used, but is not recommended._
+1. Cache current settings
+2. Update settings file
+3. Replace default settings with cached settings
+4. If settings cant be cached, prompt user to reconfigure
+```
+```
+0 - folder
+1 - script
+2 - local script
+3 - module
 
-**\* - Development version (Latest Changes at the time of commit)**
-| Version | ISO 8601         | Supported |
-| ------- | ---------------- | --------- |
-| *0.2.0  | 20221230T232640Z | No        |
-| *0.1.0  | 20221229T235630Z | No        |
+C - DragonEyeClient
+S - DragonEyeServer
+R - DragonEyeShared
+
+type:side:path:hash
+
+Server:
+return {
+	3:R:Debug.Codes:53647893457983eqtgfh97g3g34,
+	0:R:Debug,
+	1:S:Main:gf8h7y348763284758672fh342,
+}
+
+Origin:
+return {
+	0:R:Debug,
+	3:R:Debug.Codes:u655784trd735677ju0h4,
+	1:S:Main:gf8h7y348763284758672fh342,
+}
+```
 
 ## Usage
 WIP
