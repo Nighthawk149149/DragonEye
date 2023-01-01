@@ -36,19 +36,47 @@ WIP
 WIP
 
 ### Versions
-The ISO 8601 column acts as a UID for the version. When the ISO 8601 is changed that means an update is avalible.
+Good stuff to start with
+```
+1. Check for update (Request from GitHub)
+2. If update, prompt install
+3. If intall, check hashes and install from GitHub
+4. When done, prompt close
+```
+```
+How to handle settings?
 
-The Supported column tells you if the version is being actively developed **or** has constant security updates. It is recommended to use a supported version to ensure the best security and performance.
+1. Cache current settings
+2. Update settings file
+3. Replace default settings with cached settings
+4. If settings cant be cached, prompt user to reconfigure
+```
+```
+0 - folder
+1 - script
+2 - local script
+3 - module
 
-The API column tells you what version the API is at. If the API is the same between two or more versions, then the API is backwards compatible for those versions. If the API is different, then the API is not backwards compatible and needs to be updated within the game to work with the new version.
+C - DragonEyeClient
+S - DragonEyeServer
+R - DragonEyeShared
 
-The Released column tells you if the version is released or not. If it is then you can find it under releases. If not then the version is not intended for public use and is only for testing.
+type:side:path:hash
 
-**\* - Development version (Latest Changes at the time of commit)**
-| ISO 8601         | Supported | API  | Released |
-| ---------------- | --------- | ---- | -------- |
-| 20221230T232640Z | No        | V0.2 | No       |
-| 20221229T235630Z | No        | V0.1 | No       |
+Server:
+return {
+	3:R:Debug.Codes:53647893457983eqtgfh97g3g34,
+	0:R:Debug,
+	1:S:Main:gf8h7y348763284758672fh342,
+}
+
+Origin:
+return {
+	0:R:Debug,
+	3:R:Debug.Codes:u655784trd735677ju0h4,
+	1:S:Main:gf8h7y348763284758672fh342,
+}
+```
 
 ## Usage
 WIP
