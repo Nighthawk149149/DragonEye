@@ -12,24 +12,30 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ]]--
---!strict
+--!nonstrict
 
-local codes = require(script.Parent.Codes)
-local p, f = print, string.format
-local doLog = require(game.ReplicatedStorage.DragonEyeShared.Settings).EnableLogging
-local shorten = require(game.ReplicatedStorage.DragonEyeShared.Settings).ShortLogs
+local log = require(game.ReplicatedStorage.DragonEyeShared.Debug.Log)
 
-local function write(code: number, file: string, message: string): ()
-    if doLog then
-        if shorten then
-            p(f("[DE] %s", message))
-        else
-            p(f("[Dragon Eye] (%s) Code: %d, Message: %s", file, code, message))
-        end
+local EventManager = {}
+local eventFunctions = {}
+-- eventFunctions.__index = eventFunctions
+
+function EventManager:Connect(event: number, func)
+    if eventFunctions[event] == nil then
+        eventFunctions[event] = {}
+    end
+    table.insert(eventFunctions[event], func)
+end
+
+function EventManager:Fire(event: number, var)
+    if eventFunctions[event] == nil then
+        log.write(log.codes.general.warn, script:GetFullName(), "Event " .. event .. " does not exist!")
+        return
+    end
+
+    for i=1, #eventFunctions[event], 1 do
+        eventFunctions[event][i](var)
     end
 end
 
-return {
-    write = write,
-    codes = codes,
-}
+return EventManager
