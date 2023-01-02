@@ -1,8 +1,3 @@
-# Version Setting
-! The version should be in ISO 8601 format (yyyymmddThhmmssZ)
-N:Version:20221231T213728Z:Current version of Dragon Eye (Do NOT change this value)
-
-# General Settings
-! Log stuff
-B:EnableLogging:true:Enable logging
-B:ShortLogs:false:Shortens the logs to make then easier to read at the cost of some information
+[General Settings]
+EnableLogging = true : Enable logging | true (on) or false (off)
+ShortLogs = false : Shortens the logs to make them easier to read at the cost of some information | true (on) or false (off)

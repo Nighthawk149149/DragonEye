@@ -33,43 +33,43 @@ impl Settings {
             .read_to_string(&mut contents)
             .unwrap();
 
-        contents.lines().for_each(|line| {
-            if line.trim().is_empty() || line.trim().starts_with('!') {
+        contents.lines().for_each(|mut line| {
+            line = line.trim();
+
+            // Remove comments and empty lines
+            if line.is_empty() || line.starts_with('!') {
                 return;
             }
 
-            if line.trim().starts_with('#') {
-                if !new_line {
-                    lua.push(format!("--: {} :--\n", &line.trim()[1..]).as_str());
-                    new_line = true;
+            if line.starts_with('[') {
+                if new_line {
+                    lua.push(format!("\n--[{}]--\n", line).as_str());
                 } else {
-                    lua.push(format!("\n--: {} :--\n", &line.trim()[1..]).as_str());
+                    lua.push(format!("--[{}]--\n", line).as_str());
+                    new_line = true;
                 }
                 return;
             }
 
-            let mut split = line.split(':');
-            let var_type = match split.next().unwrap() {
-                "B" => "boolean",
-                "N" => "number",
-                _ => panic!("Invalid type"),
-            };
+            let mut split_at_equals = line.split('=');
+            let name = split_at_equals.next().unwrap().trim();
+            let mut split_at_colon = split_at_equals.next().unwrap().split(':');
+            let value = split_at_colon.next().unwrap().trim();
+            let comment = split_at_colon.next().unwrap().trim();
 
-            let var_name = split.next().unwrap();
-
-            let var_value = if var_name == "Version" {
-                let value = split.next().unwrap().replace("T", "");
-                value.replace("Z", "")
+            let value_type;
+            if value == "true" || value == "false" {
+                value_type = "boolean";
+            } else if value.parse::<f64>().is_ok() {
+                value_type = "number";
             } else {
-                String::from(split.next().unwrap())
-            };
-
-            let var_comment = split.next().unwrap();
+                value_type = "string";
+            }
 
             lua.push(
                 format!(
-                    "\t--[[ {} ]]--\n\t{} = {}, -- {} (Default: {})\n",
-                    var_comment, var_name, var_value, var_type, var_value
+                    "\t-- {}\n\t{} = {}, -- {} (Default: {})\n",
+                    comment, name, value, value_type, value
                 )
                 .as_str(),
             );
