@@ -4,7 +4,7 @@
 
 A Universal Roblox Anti-Cheat made for performance and accuracy.
 
-**_Version: 0.3.0_**
+**_Version: 0.3.1_**
 
 ## Table of Contents
 - [DragonEye](#dragoneye)
