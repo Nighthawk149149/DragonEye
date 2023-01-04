@@ -18,8 +18,9 @@ local log = require(game.ReplicatedStorage.DragonEyeShared.Debug.Log)
 
 local EventManager = {}
 local eventFunctions = {}
--- eventFunctions.__index = eventFunctions
 
+-- This will take a number (the event ID) and a function which can be called by the event ID using Fire.
+-- This can be used to create communication between different scripts throughout the entire game (once the client-side portion is implemented)
 function EventManager:Connect(event: number, func)
     if eventFunctions[event] == nil then
         eventFunctions[event] = {}
@@ -27,6 +28,8 @@ function EventManager:Connect(event: number, func)
     table.insert(eventFunctions[event], func)
 end
 
+-- This will use the ID and whatever variables you pass.
+-- It will call all functions with the same ID so if an event like "ping" is called, all functions with the ID "ping" will be called and can handle said event.
 function EventManager:Fire(event: number, var)
     if eventFunctions[event] == nil then
         log.write(log.codes.general.warn, script:GetFullName(), "Event " .. event .. " does not exist!")
