@@ -23,6 +23,12 @@
       }
     },
 
+    "ServerStorage": {
+      "DragonEyePlugin": {
+        "$path": "src/Luau/Plugin"
+      }
+    },
+
     "Workspace": {
       "$properties": {
         "FilteringEnabled": true
