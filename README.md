@@ -15,7 +15,7 @@ A Universal Roblox Anti-Cheat made for performance and accuracy.
     - [Installation](#installation)
     - [Versions](#versions)
   - [Usage](#usage)
-  - [Board (GitHub Projects)](https://github.com/users/Nighthawk149149/projects/2/views/1)
+  - [Board (GitHub Projects)](https://github.com/users/nickstienz/projects/2/views/1)
   - [Contributing](#contributing)
   - [License](#license)
   - [Contact](#contact)
