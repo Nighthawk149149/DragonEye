@@ -37,11 +37,11 @@ local widgetInfo = DockWidgetPluginGuiInfo.new(
 local widget = plugin:CreateDockWidgetPluginGui("DragonEyeWidget", widgetInfo)
 widget.Title = "Dragon Eye"  -- Optional widget title
 
-local Background = require(script.Parent.Widget.Background)
-Background(widget)
+-- Load the versionLabel module
+local versionLabel = require(script.Parent.Widget.VersionLabel)
+versionLabel.create(widget) -- Create the label
 
-local TopBar = require(script.Parent.Widget.TopBar)
-TopBar(widget)
+versionLabel.changeVersionLabel(widget, versionLabel.getCurrentVersion().label) -- Change label to the current version
 
 -- Open or close the plugin
 pluginButton.Click:Connect(function()

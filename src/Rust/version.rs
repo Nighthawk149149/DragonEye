@@ -1,4 +1,4 @@
---[[
+/*
 Dragon Eye - A universal Roblox Anti-Cheat
 Copyright (C) 2022  Nicholas Stienz <nickstienz@gmail.com>
 This program is free software: you can redistribute it and/or modify
@@ -11,18 +11,32 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
-]]--
---!strict
-return {
---[[Version Settings]]--
-	-- The current version of the program | Do not change this
-	CurrentVersion = "0.4.0", -- string (Default: "0.4.0")
-	-- The version channel to use | 0
-	VersionChannel = 0, -- number (Default: 0)
+*/
 
---[[General Settings]]--
-	-- Enable logging | true (on) or false (off)
-	EnableLogging = true, -- boolean (Default: true)
-	-- Shortens the logs to make them easier to read at the cost of some information | true (on) or false (off)
-	ShortLogs = false, -- boolean (Default: false)
+use std::{fs::File, io::Read};
+
+use crate::to_lua::lua::Lua;
+
+pub struct Version;
+
+impl Version {
+    pub fn run() {
+        let mut lua = Lua::new();
+
+        let mut contents = String::new();
+        File::open("./src/Data/settings.txt")
+            .unwrap()
+            .read_to_string(&mut contents)
+            .unwrap();
+
+        contents.lines().for_each(|line| {
+            if line.starts_with("CurrentVersion = ") {
+                let mut split = line.split('"');
+                let version = split.nth(1).unwrap().trim();
+                lua.push(version);
+            }
+        });
+
+        lua.output("./VERSION.txt")
+    }
 }

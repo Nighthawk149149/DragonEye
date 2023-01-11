@@ -1,3 +1,7 @@
+[Version Settings]
+CurrentVersion = "0.4.0" : The current version of the program | Do not change this
+VersionChannel = 0 : The version channel to use | 0 = Stable (master), 1 = Dev(develop)
+
 [General Settings]
 EnableLogging = true : Enable logging | true (on) or false (off)
 ShortLogs = false : Shortens the logs to make them easier to read at the cost of some information | true (on) or false (off)

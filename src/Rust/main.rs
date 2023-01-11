@@ -15,8 +15,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 mod codes;
 mod settings;
 mod to_lua;
+mod version;
 
 fn main() {
     settings::Settings::run();
     codes::Codes::run();
+    version::Version::run();
 }
